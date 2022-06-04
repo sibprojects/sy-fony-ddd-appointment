@@ -1,6 +1,6 @@
 <?php
 
-namespace
+namespace Tests\AcmeVet\Scheduling\Domain\Appointment;
 
 use AcmeVet\Scheduling\Domain\Appointment\Appointment;
 use AcmeVet\Scheduling\Domain\Appointment\AppointmentId;
