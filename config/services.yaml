@@ -19,6 +19,7 @@ services:
             - '../src/App/DependencyInjection/'
             - '../src/App/Entity/'
             - '../src/App/Kernel.php'
+            - '../src/App/Tests/'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
@@ -28,3 +29,14 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    # Tell Symfony to auto-wire everything that it finds within the AcmeVet namespace
+    AcmeVet\:
+        resource: '../src/AcmeVet/'
+
+    # We can tell Symfony's messenger component to regard AppointmentBookingHandler
+    # as a handler when command classes are dispatched through the message bus.
+    # When a handler class is able to handle a given command object on the bus,
+    # Symfony will deal with invoking the handler for us.
+    AcmeVet\Scheduling\Application\Command\Booking\AppointmentBookingHandler:
+        tags: [messenger.message_handler]
